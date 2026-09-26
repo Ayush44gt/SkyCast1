@@ -43,11 +43,19 @@ cd SkyCast1
 **Get an API key** — sign up free at [OpenWeatherMap](https://openweathermap.org/api)
 and copy your key.
 
-Set it in `api.js`, `index.js` and `script.js`:
+Then create your local config from the template:
+
+```bash
+cp config.example.js config.js
+```
+
+and put your key in `config.js`:
 
 ```js
 const API_KEY = "your_openweathermap_api_key";
 ```
+
+`config.js` is gitignored, so your key stays out of version control.
 
 Then open `index.html` in a browser, or serve the folder:
 
@@ -55,10 +63,13 @@ Then open `index.html` in a browser, or serve the folder:
 npx serve .
 ```
 
-> **Note:** because this is a static, keyless-backend app, the API key is
-> visible in the client bundle. Use a free-tier key you're happy to rotate, and
-> restrict it in the OpenWeatherMap dashboard. For anything production-facing,
-> proxy the request through a small backend so the key never reaches the browser.
+> **Note:** this is a static app with no backend, so whatever key you use is
+> visible to anyone who opens devtools — that's inherent to the architecture,
+> not something `config.js` fixes. Keeping it out of git just stops the key
+> leaking to everyone who reads the repo. Use a free-tier key you're happy to
+> rotate, and restrict it in the OpenWeatherMap dashboard. For anything
+> production-facing, proxy the request through a small backend so the key never
+> reaches the browser at all.
 
 ---
 
@@ -68,6 +79,7 @@ npx serve .
 |---|---|
 | `index.html` | Page structure |
 | `styles.css` | Layout and theming |
+| `config.js` | Your API key (gitignored — copy from `config.example.js`) |
 | `api.js` | OpenWeatherMap request layer |
 | `script.js` | Search handling and DOM rendering |
 | `index.js` | Forecast rendering |

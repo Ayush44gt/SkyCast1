@@ -1,0 +1,5 @@
+# local config holding the API key — never commit
+config.js
+
+.DS_Store
+node_modules/

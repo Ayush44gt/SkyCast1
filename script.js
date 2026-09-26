@@ -1,5 +1,5 @@
 console.log("Hello");
-const API_KEY = "168771779c71f3d64106d8a88376808a";
+// API_KEY is supplied by config.js (gitignored) — see config.example.js
 
 function renderWeatherInfo(data) {
   let newPara = document.createElement("p");
